@@ -20,26 +20,22 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 with open('message.txt', 'r') as file:
     msg = quote(file.read())
 
-# Create Numbers List
-numbers = []
-with open('numbers.txt', 'r') as file:
-    for n in file.readlines():
-        numbers.append(n.rstrip())
-
 # Open browser with default link
 link = 'https://web.whatsapp.com'
 driver.get(link)
 time.sleep(login_time)
 
-# Start sending message on loop
-for num in numbers:
-    link = f'https://web.whatsapp.com/send/?phone={country_code}{num}&text={msg}'
-    driver.get(link)
-    time.sleep(new_msg_time)
-    actions = ActionChains(driver)
-    actions.send_keys(Keys.ENTER)
-    actions.perform()
-    time.sleep(send_msg_time)
+# Loop Through Numbers List
+with open('numbers.txt', 'r') as file:
+    for n in file.readlines():
+        num = n.rstrip()
+        link = f'https://web.whatsapp.com/send/?phone={country_code}{num}&text={msg}'
+        driver.get(link)
+        time.sleep(new_msg_time)
+        actions = ActionChains(driver)
+        actions.send_keys(Keys.ENTER)
+        actions.perform()
+        time.sleep(send_msg_time)
 
 # Quit the driver
 driver.quit()

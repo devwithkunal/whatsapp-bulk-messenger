@@ -1,6 +1,8 @@
 # Whatsapp Bulk Messages Sender With Python
 Send bulk WhatsApp messages for marketing without any API for free.
 
+### Join My Discrod Server: [https://discord.gg/yfKCmR7S](https://discord.gg/yfKCmR7S)
+
 ## How To Use
 
 ### 1. Install Packages
